@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
+const usedCommandRecently = new set();
 
 // playing
 client.on('ready', () => {                           
@@ -929,7 +929,29 @@ message.channel.send(`** ${args}**`);
 }
 });
 
+client.on('message', message => }
+ 
+     var prefix = "!" ;
 
+     let args = message.content.substring(PREFIX.length).split(" ");
+	 
+	 switch (args[0]) {
+		 case 'cooLdown' :
+		    if(usedCommandRecently.has(message.author.id)){
+				message.reply("You Cannot use this command now! wait nother 30 secound");
+			} else{
+				message.reply('You are not in the wait time! this is RangerZero Command');
+				
+				usedCommandRecently.add(message.author.id);
+				setTimeout(() => {
+					usedCommandRecently.delet(message.author.id)
+				}, 30000);
+				
+			}
+		
+		break;
+	 }	
+});
 
 
 client.login(process.env.BOT_TOKEN);
